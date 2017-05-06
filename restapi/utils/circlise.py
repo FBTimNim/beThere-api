@@ -29,7 +29,6 @@ def getProfilePic(userID):
 
     fn = upload.hashFile('hardcoding_hullo.png')
 
-    # Save the file as a base 64 string.
-    im.save('/media/thumbs/' + fn, format="PNG")
+    im.save('media/thumbs/' + fn, format="PNG")
 
     return "/media/thumbs/" + fn

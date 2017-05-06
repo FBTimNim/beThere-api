@@ -148,10 +148,8 @@ def getRelevant():
     for i in Media.query.filter(Media.startDate > startTime):
         tempDict = dict()
 
-        turl = base64.b64decode(circlise.getProfilePic(i.uid)).decode('utf-8')
-
         tempDict['url'] = "/" + app.config["UPLOAD_FOLDER"] + "/" + i.filename
-        tempDict['thumbUrl'] = turl
+        tempDict['thumbUrl'] = circlise.getProfilePic(i.uid)
         tempDict['type'] = i.mediaType
         tempDict['lat'] = i.lat
         tempDict['lon'] = i.lon
