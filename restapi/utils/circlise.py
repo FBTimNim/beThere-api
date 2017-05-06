@@ -13,6 +13,9 @@ def getProfilePic(userID):
     response = request.urlopen('http://graph.facebook.com/' +
                                str(userID) + '/picture?type=square')
 
+    if response.code != 200:
+        return ""
+
     # Make the image a circle.
     im = Image.open(BytesIO(response.read()))
     bigsize = (im.size[0] * 3, im.size[1] * 3)
