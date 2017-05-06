@@ -10,10 +10,10 @@ from PIL import Image, ImageDraw, ImageOps
 def getProfilePic(userID):
     """Return compressed version of a user's profile pic."""
     # Get profile image from Facebook.
-    response = request.urlopen('http://graph.facebook.com/' +
-                               str(userID) + '/picture?type=square')
-
-    if response.code != 200:
+    try:
+        response = request.urlopen('http://graph.facebook.com/' +
+                                   str(userID) + '/picture?type=square')
+    except Exception as e:
         return ""
 
     # Make the image a circle.
