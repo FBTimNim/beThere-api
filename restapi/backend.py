@@ -1,5 +1,6 @@
 """Provides the routes for the application."""
 
+import os
 from datetime import datetime, timedelta
 
 from flask import Flask, jsonify, request, send_from_directory, url_for
@@ -45,7 +46,7 @@ class Media(db.Model):
 
 
 @app.route('/api/<filename>', methods=["GET"])
-def getPhoto(filename):
+def getMedia(filename):
     """Return file."""
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
@@ -55,15 +56,16 @@ def uploadMedia():
     """Upload media to the host or return error on fail."""
     # Test API key.
     apikey = request.form['apikey']
-    if not upload.checkApiKey(apikey):
+    if not api.checkApiKey(apikey):
         return jsonify(notOkay(403, "Access denied. Incorrect API key."))
 
     # Get form params.
-    mediaID = request.form['mediaID']
     mediaType = request.form['type']
 
     lat = request.form['lat']
     lon = request.form['lon']
+
+    uid = request.form['uid']
 
     try:
         delay = int(request.form['delay'])
@@ -73,8 +75,8 @@ def uploadMedia():
         delay = 0
         duration = 24
 
-    startDate = getIncrement(delay)
-    endDate = getIncrement(duration + delay)
+    startDate = dates.getIncrement(delay)
+    endDate = dates.getIncrement(duration + delay)
 
     # Get file that has been uploaded.
     media = request.files['media']
@@ -89,23 +91,25 @@ def uploadMedia():
         media.save(os.path.join(app.config['UPLOAD_FOLDER'], fn))
 
         # Upload renamed file to database.
-        newPhoto = Photo(
+        newMedia = Media(
             lat=lat,
             lon=lon,
+            mediaType=mediaType,
             filename=fn,
+            uid=uid,
             startDate=startDate,
             endDate=endDate,
         )
 
         # Finally, commit to the DB.
-        db.session.add(newPhoto)
+        db.session.add(newMedia)
         db.session.commit()
 
-        return {
+        return jsonify({
             "code": 200,
             "message": "OK.",
             "data": []
-        }, 200
+        })
 
     return jsonify(notOkay(400, "No file has been uploaded"))
 

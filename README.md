@@ -38,6 +38,7 @@ To get photos and videos use one of the following API calls:
 		-	apikey: Your API key.
 		-	lat: Latitude.
 		-	lon: Longitude.
+		-	uid: Facebook user id of authenticated user.
 		-	type: The type of the file. Must be "photo" or "video".
-		-	delay (optional): Number of hours to delay posting the video.
-		-	duration (optional): Number of hours to keep the video alive.
+		-	delay: Number of hours to delay posting the video.
+		-	duration: Number of hours to keep the video alive.

@@ -7,7 +7,6 @@ from utils import api
 
 if __name__ == "__main__":
     argc = len(argv)
-    print(argc)
 
     if argc > 1:
         if argv[1] == "start":
