@@ -59,6 +59,13 @@ def getMedia(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
 
+@app.route('/api/media/thumbs/<filename>', methods=["GET"])
+def getThumbs(filename):
+    """Return thumbs."""
+    return send_from_directory(app.config['UPLOAD_FOLDER'] + "/thumbs/",
+                               filename)
+
+
 @app.route('/api/upload', methods=["POST"])
 def uploadMedia():
     """Upload media to the host or return error on fail."""
