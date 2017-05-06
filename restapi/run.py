@@ -12,7 +12,7 @@ if __name__ == "__main__":
         if argv[1] == "start":
             try:
                 argHost, argPort = argv[2].split(":")
-                app.run(argHost, int(argPort), debug=DEBUG)
+                app.run(argHost, int(argPort), debug=DEBUG, threaded=True)
             except Exception as e:
                 print("Error: input not understood. Ensure your input " +
                       "string is of the correct form.")
