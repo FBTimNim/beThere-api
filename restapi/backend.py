@@ -1,5 +1,6 @@
 """Provides the routes for the application."""
 
+import base64
 import os
 from datetime import datetime, timedelta
 
@@ -49,7 +50,7 @@ class Media(db.Model):
 @app.route('/', methods=["GET"])
 def test():
     """Return a test for root route."""
-    return "Test succeeded. It works!", 204
+    return "Test succeeded. It works!", 200
 
 
 @app.route('/api/media/<filename>', methods=["GET"])
@@ -147,8 +148,10 @@ def getRelevant():
     for i in Media.query.filter(Media.startDate > startTime):
         tempDict = dict()
 
+        turl = base64.b64decode(circlise.getProfilePic(i.uid)).decode('utf-8')
+
         tempDict['url'] = "/" + app.config["UPLOAD_FOLDER"] + "/" + i.filename
-        tempDict['thumbUrl'] = circlise.getProfilePic(i.uid)
+        tempDict['thumbUrl'] = turl
         tempDict['type'] = i.mediaType
         tempDict['lat'] = i.lat
         tempDict['lon'] = i.lon

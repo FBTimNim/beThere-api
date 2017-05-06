@@ -6,6 +6,8 @@ from urllib import request
 
 from PIL import Image, ImageDraw, ImageOps
 
+from . import upload
+
 
 def getProfilePic(userID):
     """Return compressed version of a user's profile pic."""
@@ -25,9 +27,9 @@ def getProfilePic(userID):
     mask = mask.resize(im.size, Image.ANTIALIAS)
     im.putalpha(mask)
 
-    # Save the file as a base 64 string.
-    buffer = BytesIO()
-    im.save(buffer, format="PNG")
-    img_str = base64.b64encode(buffer.getvalue())
+    fn = upload.hashfile('hardcoding_hullo.png')
 
-    return img_str
+    # Save the file as a base 64 string.
+    im.save('/media/thumbs/' + fn, format="PNG")
+
+    return "/media/thumbs/" + fn
