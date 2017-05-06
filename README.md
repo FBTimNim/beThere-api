@@ -37,6 +37,7 @@ def getMusic(filename):
 	"""return music of an event"""
 	return send_from_directory(app.config['MUSIC_FOLDER'], filename)
 	
+<<<<<<< HEAD
 class Media(db.Model):
 	"""Media table."""
 	id = db.Column(db.BigInteger, primary_key=True)
@@ -58,3 +59,5 @@ def uploadMedia():
 	media = request.files['media']
 	
 	"""
+=======
+>>>>>>> refs/remotes/origin/master
