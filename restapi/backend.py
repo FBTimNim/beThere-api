@@ -46,7 +46,7 @@ class Media(db.Model):
 @app.route('/', methods=["GET"])
 def test():
     """Return a test for root route."""
-    return "Test succeeded. It works!"
+    return "Test succeeded. It works!", 204
 
 
 @app.route('/api/media/<filename>', methods=["GET"])
@@ -110,10 +110,10 @@ def uploadMedia():
         db.session.commit()
 
         return jsonify({
-            "code": 200,
+            "code": 204,
             "message": "OK.",
             "data": []
-        })
+        }), 204
 
     return jsonify(notOkay(400, "No file has been uploaded"))
 
@@ -151,11 +151,11 @@ def getRelevant():
 
         allRelevant.append(tempDict)
 
-    returnVal["code"] = 200
+    returnVal["code"] = 204
     returnVal["message"] = "OK."
     returnVal["data"] = allRelevant
 
-    return jsonify(returnVal)
+    return jsonify(returnVal), 204
 
 
 # Create database tables and commit.
