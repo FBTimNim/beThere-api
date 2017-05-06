@@ -26,7 +26,7 @@ db = SQLAlchemy(app, use_native_unicode=True)
 # API Views, main route logic.
 
 
-@app.route("/api/test", methods=["GET, POST"])
+@app.route("/api/test")
 def testConnection():
     """Display simple test route for the API."""
     if request.method == "GET":
