@@ -28,6 +28,3 @@ def getProfilePic(userID):
     img_str = base64.b64encode(buffer.getvalue())
 
     return img_str
-
-
-print(getProfilePic(100000248571265))
