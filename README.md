@@ -22,3 +22,17 @@ CREATE TABLE IF NOT EXISTS `Media` (
 );
 
 ```
+@app.route('/api/photo/<filename>', methods=["GET"])
+def getPhoto(filename):
+	"""return photo of an event"""
+	return send_from_directory(app.config['PHOTO_FOLDER], filename)
+	
+@app.route('/api/video/<filename>', methods=["GET"])
+def getVideo(filename):
+	"""return video of an event"""
+	return send_from_directory(app.config['VIDEO_FOLDER], filename)
+	
+@app.route('/api/music/<filename>', methods=["GET"])
+def getMusic(filename):
+	"""return music of an event"""
+	return send_from_directory(app.config['MUSIC_FOLDER], filename)
