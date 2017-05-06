@@ -22,18 +22,18 @@ CREATE TABLE IF NOT EXISTS `Media` (
 );
 
 ```
-@app.route('/api/photo/<filename>', methods=["GET"])
-def getPhoto(filename):
-	"""return photo of an event"""
-	return send_from_directory(app.config['PHOTO_FOLDER'], filename)
-	
-@app.route('/api/video/<filename>', methods=["GET"])
-def getVideo(filename):
-	"""return video of an event"""
-	return send_from_directory(app.config['VIDEO_FOLDER'], filename)
-	
-@app.route('/api/music/<filename>', methods=["GET"])
-def getMusic(filename):
-	"""return music of an event"""
-	return send_from_directory(app.config['MUSIC_FOLDER'], filename)
-	
+
+API Documentation
+-----------------
+
+To get photos, videos, and music, use one of the following API calls:
+
+-	Get photo:
+	-	METHOD: GET
+	-	ROUTE: /api/photo/<filename> PARAMETERS: None.
+-	Get music:
+	-	METHOD: GET.
+	-	ROUTE: /api/music/<filename> PARAMETERS: None.
+-	Get video:
+	-	METHOD: GET
+	-	ROUTE: /api/video/<filename> PARAMETERS: None.

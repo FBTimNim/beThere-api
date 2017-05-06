@@ -10,7 +10,7 @@ import secure
 
 # Run the application.
 app = Flask(__name__)
-DEBUG = True
+DEBUG = False
 
 # Directories for uploading media.
 app.config['PHOTO_FOLDER'] = 'media/photos'
