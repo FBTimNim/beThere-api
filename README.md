@@ -18,15 +18,22 @@ CREATE TABLE IF NOT EXISTS `Media` (
   lat DOUBLE,
   lon DOUBLE,
   path VARCHAR(300),
-  type ENUM('photo', 'video', 'music'),
-  startDate DATETIME,
-  endDate DATETIME
+  type ENUM('photo', 'video', 'music')
 );
 
 ```
-
-@app.route('/api/photo/<filename>', methods=["GET"]) def getPhoto(filename): """return photo of an event""" return send_from_directory(app.config['PHOTO_FOLDER], filename)
-
-@app.route('/api/video/<filename>', methods=["GET"]) def getVideo(filename): """return video of an event""" return send_from_directory(app.config['VIDEO_FOLDER], filename)
-
-@app.route('/api/music/<filename>', methods=["GET"]) def getMusic(filename): """return music of an event""" return send_from_directory(app.config['MUSIC_FOLDER], filename)
+@app.route('/api/photo/<filename>', methods=["GET"])
+def getPhoto(filename):
+	"""return photo of an event"""
+	return send_from_directory(app.config['PHOTO_FOLDER'], filename)
+	
+@app.route('/api/video/<filename>', methods=["GET"])
+def getVideo(filename):
+	"""return video of an event"""
+	return send_from_directory(app.config['VIDEO_FOLDER'], filename)
+	
+@app.route('/api/music/<filename>', methods=["GET"])
+def getMusic(filename):
+	"""return music of an event"""
+	return send_from_directory(app.config['MUSIC_FOLDER'], filename)
+	
