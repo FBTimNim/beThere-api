@@ -139,7 +139,7 @@ def getRelevant():
     allRelevant = list()
 
     # Send all images that
-    for i in Media.query.filter(Media.startDate >= startTime):
+    for i in Media.query.filter(Media.startDate > startTime):
         tempDict = dict()
 
         tempDict['url'] = "/" + app.config["UPLOAD_FOLDER"] + "/" + i.filename
