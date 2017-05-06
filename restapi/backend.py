@@ -37,15 +37,13 @@ class Media(db.Model):
     filename = db.Column(db.Text(), nullable=False)
     uid = db.Column(db.Text(), nullable=False)
 
-    active = db.Column(db.Boolean, default=True, nullable=False)
-
     startDate = db.Column(db.DateTime, nullable=False)
     endDate = db.Column(db.DateTime, nullable=False)
 
 # API Views, main route logic.
 
 
-@app.route('/api/<filename>', methods=["GET"])
+@app.route('/api/media/<filename>', methods=["GET"])
 def getMedia(filename):
     """Return file."""
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
@@ -114,16 +112,38 @@ def uploadMedia():
     return jsonify(notOkay(400, "No file has been uploaded"))
 
 
-@app.route('/api/getRelevant')
+@app.route('/api/getRelevant', methods=["POST"])
 def getRelevant():
     """Return all of the relevant pins in the database."""
+    # Test API key.
+    apikey = request.form['apikey']
+    if not api.checkApiKey(apikey):
+        return jsonify(notOkay(403, "Access denied. Incorrect API key."))
+
+    # Get form params.
+    try:
+        withinTime = int(request.form['withinTime'])
+    except Exception as e:
+        withinTime = 1
+
+    # Now, get the point in time where we will start to test after startDates.
+    startTime = datetime.now() - timedelta(hours=withinTime)
+
     returnVal = dict()
     allRelevant = list()
 
-    for i in Media.query.filter_by(active == 1):
-        print(i)  # Debug
+    # Send all images that
+    for i in Media.query.filter(Media.startDate >= startTime):
+        tempDict = dict()
 
-        allRelevant.append(i)
+        tempDict['url'] = "/" + app.config["UPLOAD_FOLDER"] + "/" + i.filename
+        tempDict['thumbUrl'] = "NOT_YET_IMPLEMENTED"
+        tempDict['type'] = i.mediaType
+        tempDict['lat'] = i.lat
+        tempDict['lon'] = i.lon
+        tempDict['uid'] = i.uid
+
+        allRelevant.append(tempDict)
 
     returnVal["code"] = 200
     returnVal["message"] = "OK."

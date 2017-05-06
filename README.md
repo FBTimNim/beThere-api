@@ -29,7 +29,7 @@ To get photos and videos use one of the following API calls:
 
 -	Get any media:
 	-	METHOD: GET
-	-	ROUTE: /api/<filename> PARAMETERS: None.
+	-	ROUTE: /api/media/<filename> PARAMETERS: None.
 -	Upload any media:
 	-	METHOD: POST
 	-	ROUTE: /api/upload
@@ -42,3 +42,18 @@ To get photos and videos use one of the following API calls:
 		-	type: The type of the file. Must be "photo" or "video".
 		-	delay: Number of hours to delay posting the video.
 		-	duration: Number of hours to keep the video alive.
+	-	RESPONSE: Simple JSON object.
+-	Get relevant media:
+	-	METHOD: POST
+	-	ROUTE: /api/getRelevant
+	-	PARAMS:
+		-	apikey: Your API key.
+		-	withinTime: Number of hours to check back for photos. I suggest a default of 1 or 0.5.
+		-	Right now this is heavily hardcoded but obviously would need some sort of processing in the future.
+	-	RESPONSE: JSON response object:
+		-	url: URL of the media.
+		-	thumbUrl: URL of the circle thumbnail.
+		-	type: Media type. Must be "photo" or "video".
+		-	lat: Latitude.
+		-	lon: Longitude.
+		-	uid: User ID of the person who posted the image.
