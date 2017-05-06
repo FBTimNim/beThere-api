@@ -9,4 +9,4 @@ DB_PASS = "password"
 
 # String to actually use to connect:
 DATABASE = "mysql+pymysql://" + DB_USER + ":" + DB_PASS + "@" + DB_HOST + \
-    DB_PORT + "/" + DB_DATABASE
+    ":" + DB_PORT + "/" + DB_DATABASE
