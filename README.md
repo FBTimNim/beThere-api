@@ -36,3 +36,4 @@ def getVideo(filename):
 def getMusic(filename):
 	"""return music of an event"""
 	return send_from_directory(app.config['MUSIC_FOLDER'], filename)
+	
