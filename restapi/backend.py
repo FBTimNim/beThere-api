@@ -43,6 +43,12 @@ class Media(db.Model):
 # API Views, main route logic.
 
 
+@app.route('/', methods=["GET"])
+def test(filename):
+    """Return a test for root route."""
+    return "Test succeeded. It works!"
+
+
 @app.route('/api/media/<filename>', methods=["GET"])
 def getMedia(filename):
     """Return file."""
