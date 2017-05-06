@@ -52,12 +52,14 @@ def getMusic(filename):
     """Return music of an event."""
     return send_from_directory(app.config['MUSIC_FOLDER'], filename)
 
-
 @app.route('/api/uploadMedia', methods=["POST"])
 def uploadMedia():
-	""""""create an event and upload media to the host. return error if fails"""""""
+	"""create an event and upload media to the host. return error if fails"""
+
 	mediaType = request.form['mediaType']
 	lat = request.form['lat']
 	lon = request.form['lng']
 	mediaID = request.form['mediaID']
 	media = request.files['media']
+
+	return 'Nothing.'
