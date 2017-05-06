@@ -113,10 +113,10 @@ def uploadMedia():
         db.session.commit()
 
         return jsonify({
-            "code": 204,
+            "code": 200,
             "message": "OK.",
             "data": []
-        }), 204
+        })
 
     return jsonify(notOkay(400, "No file has been uploaded"))
 
@@ -154,11 +154,11 @@ def getRelevant():
 
         allRelevant.append(tempDict)
 
-    returnVal["code"] = 204
+    returnVal["code"] = 200
     returnVal["message"] = "OK."
     returnVal["data"] = allRelevant
 
-    return jsonify(returnVal), 204
+    return jsonify(returnVal)
 
 
 # Create database tables and commit.
