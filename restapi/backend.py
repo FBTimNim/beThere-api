@@ -62,9 +62,10 @@ def getMedia(filename):
 def uploadMedia():
     """Upload media to the host or return error on fail."""
     # Test API key.
+    print()
     apikey = request.form['apikey']
     if not api.checkApiKey(apikey):
-        return jsonify(response.notOkay(403, "Access denied. Incorrect API key."))
+        return jsonify(response.notOkay(403, "Access denied."))
 
     # Get form params.
     mediaType = request.form['type']
@@ -90,7 +91,7 @@ def uploadMedia():
 
     # Filename must be nonempty to be valid.
     if media.filename == '':
-        return jsonify(response.notOkay(403, "Cannot upload without a filename."))
+        return jsonify(response.notOkay(403, "No filename."))
 
     # If there aren't any problems getting the file (empty file).
     if media:
@@ -118,7 +119,7 @@ def uploadMedia():
             "data": []
         })
 
-    return jsonify(response.notOkay(400, "No file has been uploaded"))
+    return jsonify(response.notOkay(401, "No file has been uploaded"))
 
 
 @app.route('/api/getRelevant', methods=["POST"])
@@ -127,7 +128,7 @@ def getRelevant():
     # Test API key.
     apikey = request.form['apikey']
     if not api.checkApiKey(apikey):
-        return jsonify(response.notOkay(403, "Access denied. Incorrect API key."))
+        return jsonify(response.notOkay(403, "Access denied."))
 
     # Get form params.
     try:
