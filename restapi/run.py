@@ -2,7 +2,7 @@
 
 from sys import argv
 
-from routes import DEBUG, app
+from backend import DEBUG, app
 
 if __name__ == "__main__":
     argc = len(argv)
