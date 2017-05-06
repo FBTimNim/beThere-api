@@ -27,7 +27,7 @@ def getProfilePic(userID):
     mask = mask.resize(im.size, Image.ANTIALIAS)
     im.putalpha(mask)
 
-    fn = upload.hashfile('hardcoding_hullo.png')
+    fn = upload.hashFile('hardcoding_hullo.png')
 
     # Save the file as a base 64 string.
     im.save('/media/thumbs/' + fn, format="PNG")
