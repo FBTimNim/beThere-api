@@ -7,7 +7,7 @@ from flask import Flask, jsonify, request, send_from_directory, url_for
 from flask_sqlalchemy import SQLAlchemy
 
 import secure
-from utils import api, circilise, dates, response, upload
+from utils import api, circlise, dates, response, upload
 
 # Run the application.
 app = Flask(__name__)
@@ -137,7 +137,7 @@ def getRelevant():
         tempDict = dict()
 
         tempDict['url'] = "/" + app.config["UPLOAD_FOLDER"] + "/" + i.filename
-        tempDict['thumbUrl'] = circilise.getProfilePic(i.uid)
+        tempDict['thumbUrl'] = circlise.getProfilePic(i.uid)
         tempDict['type'] = i.mediaType
         tempDict['lat'] = i.lat
         tempDict['lon'] = i.lon
