@@ -31,5 +31,5 @@ def testConnection():
     """Display simple test route for the API."""
     if request.method == "GET":
         return "You sent a GET request and we received it. Congrats!"
-    else if request.method == "POST":
+    elif request.method == "POST":
         return "You sent a POST request and we received it. Congrats!"
