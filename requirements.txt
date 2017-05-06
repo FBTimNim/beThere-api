@@ -1,3 +1,7 @@
 flask
 Flask-SQLAlchemy
 pymysql
+from PIL Image, ImageOps, ImageDraw
+
+requests
+from io BytesIO
