@@ -6,7 +6,7 @@ REST API backend for the beThere application.
 Installation
 ------------
 
-You first need to setup your database. We use MySQL though any relational DBMS will work as long as you pass in the right credentials. The user should have CRUD permissions and **nothing more**. Note down the credentials and DB information for your application.
+You first need to setup your database. We use MySQL though any relational DBMS will work as long as you pass in the right credentials. The user should have CRUD permissions and the ability to create and drop tables. Note down the credentials and DB information for your application.
 
 The database schema is shown in the `backend.py` file.
 
@@ -48,7 +48,7 @@ To get photos and videos use one of the following API calls:
 	-	ROUTE: /api/getRelevant
 	-	PARAMS:
 		-	apikey: Your API key.
-		-	withinTime: Number of hours to check back for photos. I suggest a default of 1 or 0.5.
+		-	withinTime: Number of hours to check back for photos. I suggest a default of 1. This will round up!
 		-	Right now this is heavily hardcoded but obviously would need some sort of processing in the future.
 	-	RESPONSE: JSON response object:
 		-	url: URL of the media.
