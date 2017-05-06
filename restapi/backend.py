@@ -7,10 +7,13 @@ from flask import Flask, jsonify, request, send_from_directory, url_for
 from flask_sqlalchemy import SQLAlchemy
 
 import secure
+from flask_cors import CORS
 from utils import api, circlise, dates, response, upload
 
 # Run the application.
 app = Flask(__name__)
+CORS(app)
+
 DEBUG = False
 
 # Directories for uploading media.
