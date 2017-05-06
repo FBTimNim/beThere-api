@@ -23,17 +23,28 @@ CREATE TABLE IF NOT EXISTS `Media` (
 
 ```
 
+After you have done this, you will need to edit the contents of the `secure.py` file. Move it from `secure.py.example` if it doesn't yet exist.
+
+Finally, ensure you have a working API key for your clientside applications. Do this by running `python run.py newapikey`. Make sure to note down what it prints. You can also `cat api.keys` at any time to see all the valid API keys.
+
+You can start the server (to test) using the command line:
+
+```bash
+python run.py start 0.0.0.0:8080
+```
+
+This will start a server on 0.0.0.0:8080.
+
+Usage
+-----
+
+See API documentation below for API calls. For
+
 API Documentation
 -----------------
 
 To get photos, videos, and music, use one of the following API calls:
 
--	Get photo:
+-	Get any media:
 	-	METHOD: GET
-	-	ROUTE: /api/photo/<filename> PARAMETERS: None.
--	Get music:
-	-	METHOD: GET.
-	-	ROUTE: /api/music/<filename> PARAMETERS: None.
--	Get video:
-	-	METHOD: GET
-	-	ROUTE: /api/video/<filename> PARAMETERS: None.
+	-	ROUTE: /api/<filename> PARAMETERS: None.
