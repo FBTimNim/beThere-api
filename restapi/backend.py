@@ -44,7 +44,7 @@ class Media(db.Model):
 
 
 @app.route('/', methods=["GET"])
-def test(filename):
+def test():
     """Return a test for root route."""
     return "Test succeeded. It works!"
 
