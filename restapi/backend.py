@@ -63,8 +63,9 @@ def uploadMedia():
     """Upload media to the host or return error on fail."""
     # Test API key.
     dict1 = request.form
-    for key in dict1:
-        print 'key: ' + key + " => " + dict1[key]
+    with open('log.log', 'w') as f:
+        for key in dict1:
+            f.write('key: ' + key + " => " + dict1[key])
     apikey = request.form['apikey']
     if not api.checkApiKey(apikey):
         return jsonify(response.notOkay(403, "Access denied."))
