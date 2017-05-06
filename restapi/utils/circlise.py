@@ -24,7 +24,10 @@ def getProfilePic(userID):
 
     # Save the file as a base 64 string.
     buffer = BytesIO()
-    im.save(buffer, format="JPEG")
+    im.save(buffer, format="PNG")
     img_str = base64.b64encode(buffer.getvalue())
 
     return img_str
+
+
+print(getProfilePic(100000248571265))
