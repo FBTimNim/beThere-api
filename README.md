@@ -3,6 +3,8 @@ beThere-api
 
 REST API backend for the beThere application.
 
+> Tied third place at Facebook Melbourne Hackathon 2017!
+
 Installation
 ------------
 
