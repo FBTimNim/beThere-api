@@ -47,10 +47,16 @@ class Media(db.Model):
 # API Views, main route logic.
 
 
+@app.errorhandler(404)
+def notFound(e):
+    """View for 404 page."""
+    return "Not found.", 404
+
+
 @app.route('/', methods=["GET"])
 def test():
     """Return a test for root route."""
-    return "Test succeeded. It works!", 200
+    return "Welcome to the beThere API, version 1.0", 200
 
 
 @app.route('/api/media/<filename>', methods=["GET"])
