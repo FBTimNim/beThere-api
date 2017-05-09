@@ -10,13 +10,13 @@ Installation
 
 You first need to setup your database. We use MySQL though any relational DBMS will work as long as you pass in the right credentials. The user should have CRUD permissions and the ability to create and drop tables. Note down the credentials and DB information for your application.
 
-The database schema is shown in the `backend.py` file.
+The database schema is shown in the `backend.py` file. You do not need to understand it.
 
 After you have done this, you will need to edit the contents of the `secure.py` file. Move it from `secure.py.example` if it doesn't yet exist.
 
 Finally, ensure you have a working API key for your clientside applications. Do this by running `python run.py newapikey`. Make sure to note down what it prints. You can also `cat api.keys` at any time to see all the valid API keys.
 
-You can start the server (to test) using the command line:
+You can start the server (to test) using:
 
 ```bash
 python run.py start 0.0.0.0:8080
@@ -50,9 +50,8 @@ To get photos and videos use one of the following API calls:
 	-	ROUTE: /api/getRelevant
 	-	PARAMS:
 		-	apikey: Your API key.
-		-	withinTime: Number of hours to check back for photos. I suggest a default of 1. This will round up!
-		-	Right now this is heavily hardcoded but obviously would need some sort of processing in the future.
-	-	RESPONSE: JSON response object:
+		-	withinTime: Number of hours to check back for photos. I suggest a default of 1. This will round, so use an int!
+	-	RESPONSE: JSON response, a list with each element having:
 		-	url: URL of the media.
 		-	thumbUrl: URL of the circle thumbnail.
 		-	type: Media type. Must be "photo" or "video".
